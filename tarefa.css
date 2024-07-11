@@ -20,7 +20,7 @@ ul {
 .descricao__tarefa{
     display: flex; /* usar sempre esse flex pra usar os outros abaixo*/
     gap: 20px; /* espaçamento entre itens* */
-    align-items: left;
+    align-items: center;
     
 }
 
