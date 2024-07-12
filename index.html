@@ -4,55 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="tarefa.css">
-    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="./base/global.css">
+    
 </head>
 <body>
-    <main>
-        <h1>Tarefas</h1>
+    <main class="container-principal__lista-tarefas">
+        <h1><center>Tarefas</center></h1>
 
-        <ul>
-            <li class="tarefa">
-                <div class="etiquetas">
-                    <div class="etiqueta__prioridade">Alta</div>    
-                    <div class="etiqueta">12/12/12</div>    
-                    <div class="etiqueta">Luísa</div>    
-                    <div class="etiqueta">Fabiano</div>    
-                </div>
-                <div class="descricao__tarefa">
-                    <h2>Revisar código crítico</h2>
-                    <p>Revisar bugs críticos no módulo principal. </p>
-                </div>
-            </li>
-
-            <li class="tarefa">
-                <div class="etiquetas">
-                    <div class="etiqueta__prioridade">Média</div>    
-                    <div class="etiqueta">12/12/12</div>    
-                    <div class="etiqueta">Luísa</div>    
-                    <div class="etiqueta">Fabiano</div>    
-                </div>
-                <div class="descricao__tarefa">
-                    <h2>Revisar código crítico</h2>
-                    <p>Revisar bugs críticos no módulo principal. </p>
-                </div>
-            </li>
-
-            <li class="tarefa">
-                <div class="etiquetas">
-                    <div class="etiqueta__prioridade">Baixa</div>    
-                    <div class="etiqueta">12/12/12</div>    
-                    <div class="etiqueta">Luísa</div>    
-                    <div class="etiqueta">Fabiano</div>    
-                </div>
-                <div class="descricao__tarefa">
-                    <h2>Revisar código crítico</h2>
-                    <p>Revisar bugs críticos no módulo principal. </p>
-                </div>
-            </li>
-
-        </ul>
+        <ul id="listaDeTarefas" class="lista__tarefas"> </ul>
     </main>
-
+    <script src="./app.js" type="module"></script>
 </body>
 </html>

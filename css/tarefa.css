@@ -1,0 +1,71 @@
+.container-principal__lista-tarefas{
+    max-width: 1024px;
+    width:100%;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.lista__tarefas{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tarefa{
+/*    box-sizing: border-box; /*define o tamanho do container mesmo com o padding*/
+    border: 1px var(--cinza-tundora) solid;
+    border-radius: 16px;
+    padding: 16px;
+    padding-bottom: 20px;
+}
+
+.descricao__tarefa{
+    margin-top: 8px;
+    display: flex; /* usar sempre esse flex pra usar os outros abaixo*/
+    gap: 16px; /* espaçamento entre itens* */
+    align-items: center;
+
+}
+
+.descricao__tarefa--titulo{
+    font-size: 20px;
+    font-weight: 700;
+    border-right: 1px solid var(--cinza-tundora);
+    padding-right: 16px;
+}
+
+.etiquetas{
+    display: flex;
+    gap: 8px;
+    
+}
+
+.etiqueta, .etiqueta__prioridade{
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    border: 1px var(--cinza-nobel) solid;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--cinza-nobel);
+}
+
+.etiqueta__prioridade{
+    border: none;
+    color: var(--branco);
+}
+
+.etiqueta__alta{
+    background-color: var(--vermelho);
+    color: white;
+}
+
+.etiqueta__media{
+    background-color: var(--amarelo);
+    color: white;
+}
+
+.etiqueta__baixa{
+    background-color: var(--verde);
+    color: white;
+}
