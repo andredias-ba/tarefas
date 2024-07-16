@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	border: none;
+	/*border: none;*/
 	font-family: var(--fonte-poppins);
 	font-size: 16px;
 	font-weight: unset;

@@ -8,11 +8,41 @@
     
 </head>
 <body>
+    <form id="formularioTarefas">
+        <label for="tituloTarefaForm">Título</label>
+        <input id="tituloTarefaForm">
+   
+        <label for="prioridadeTarefaForm">Prioridade</label>
+        <select name="" id="prioridadeTarefaForm">
+          <option value="Alta">Alta</option>
+          <option value="Média">Média</option>
+          <option value="Baixa">Baixa</option>
+        </select>
+   
+        <label for="dataTarefaForm">Data</label>
+        <input type="date" name="" id="dataTarefaForm">
+   
+        <label for="descricaoTarefaForm">Descrição</label>
+        <textarea name="" id="descricaoTarefaForm"></textarea>
+   
+        <label for="">Responsável(is):</label>
+
+        <input type="checkbox" name="" id="">
+        <label for=""> William </label>
+        <input type="checkbox" name="" id="">
+        <label for=""> André </label>
+        <input type="checkbox" name="" id="">
+        <label for=""> Vinícius </label>
+        
+   
+        <button type="button">Limpar</button>
+        <button id="botaoAdicionar">Adicionar</button>
+      </form>
     <main class="container-principal__lista-tarefas">
         <h1><center>Tarefas</center></h1>
 
         <ul id="listaDeTarefas" class="lista__tarefas"> </ul>
     </main>
-    <script src="./app.js" type="module"></script>
+    <script src="/js/index.js" type="module"></script>
 </body>
 </html>

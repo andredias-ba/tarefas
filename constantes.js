@@ -36,12 +36,4 @@ export const TAREFAS = [
   }
 ]
  
-const prioridadeMapeamento = {
-    Alta:  1,
-    Média: 2,
-    Baixa: 3
-}
-
-TAREFAS.sort((a, b) => {
-    return prioridadeMapeamento[a.prioridade] - prioridadeMapeamento[b.prioridade]
-})
+export const PRIORIDADES = ['Alta', 'Média', 'Baixa']
