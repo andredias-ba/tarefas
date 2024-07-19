@@ -1,44 +1,43 @@
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	/*border: none;*/
-	font-family: var(--fonte-poppins);
-	font-size: 16px;
-	font-weight: unset;
-  }
-   
-  html {
-	scroll-behavior: smooth;
-  }
-   
-  body {
-	background-color: var(--branco);
-  }
-   
-  a {
-	text-decoration: none;
-  }
-   
-  button {
-	background-color: unset;
-	cursor: pointer;
-  }
-   
-  ol,
-  ul {
-	list-style: none;
-  }
-   
-  svg {
-	display: block;
-  }
-   
-  ::placeholder {
-	color: var(--cinza-nobel);
-	font-size: 0.8rem;
-  }
-   
-  fieldset {
-	border: none;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--fonte-poppins);
+  font-size: 16px;
+  font-weight: unset;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--branco);
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background-color: unset;
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+svg {
+  display: block;
+}
+
+::placeholder {
+  color: var(--cinza-nobel);
+  font-size: 0.8rem;
+}
+
+fieldset {
+  border: none;
+}

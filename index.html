@@ -1,48 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="./base/global.css">
-    
-</head>
-<body>
-    <form id="formularioTarefas">
-        <label for="tituloTarefaForm">Título</label>
-        <input id="tituloTarefaForm">
-   
-        <label for="prioridadeTarefaForm">Prioridade</label>
-        <select name="" id="prioridadeTarefaForm">
-          <option value="Alta">Alta</option>
-          <option value="Média">Média</option>
-          <option value="Baixa">Baixa</option>
-        </select>
-   
-        <label for="dataTarefaForm">Data</label>
-        <input type="date" name="" id="dataTarefaForm">
-   
-        <label for="descricaoTarefaForm">Descrição</label>
-        <textarea name="" id="descricaoTarefaForm"></textarea>
-   
-        <label for="">Responsável(is):</label>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de tarefas</title>
+    <link rel="stylesheet" href="base/global.css" />
+  </head>
+  <body>
+    <div class="conteudo-principal">
+      <form id="formularioTarefas" class="formulario-tarefas">
+        <div class="formulario-tarefas--linha-inteira">
+          <div class="formulario-tarefas--linha-metade">
+            <div class="formulario-tarefas--coluna">
+              <label class="tituloTarefaForm">Título</label>
+              <input
+                id="tituloTarefaForm"
+                placeholder="Ex.: Revisar código crítico"
+                class="input--borda"
+              />
+            </div>
+          </div>
 
-        <input type="checkbox" name="" id="">
-        <label for=""> William </label>
-        <input type="checkbox" name="" id="">
-        <label for=""> André </label>
-        <input type="checkbox" name="" id="">
-        <label for=""> Vinícius </label>
-        
-   
-        <button type="button">Limpar</button>
-        <button id="botaoAdicionar">Adicionar</button>
+          <div class="formulario-tarefas--linha-metade">
+            <div class="formulario-tarefas--coluna">
+              <label for="prioridadeTarefaForm">Prioridade</label>
+              <select id="prioridadeTarefaForm" class="input--borda">
+                  <option value="Aula">Alta</option>
+              </select>
+            </div>
+
+            <div class="formulario-tarefas--coluna">
+              <label for="dataTarefaForm">Data</label>
+              <input type="date" id="dataTarefaForm" class="input--borda" />
+            </div>
+          </div>
+        </div>
+
+        <div class="formulario-tarefas--linha-inteira">
+          <div class="formulario-tarefas--coluna">
+            <label for="descricaoTarefaForm">Descrição</label>
+            <textarea
+              id="descricaoTarefaForm"
+              placeholder="Revisar bugs críticos no módulo principal."
+              class="input-textarea input--borda"
+            ></textarea>
+          </div>
+
+          <div class="formulario-tarefas--coluna">
+            <label for="responsavelTarefaForm">Responsável(is):</label>
+            <div class="container__checkbox">
+              <div class="container__checkbox--item">
+                <input type="checkbox" id="cb1" data-responsavel/>
+                <label for="cb1">André</label>
+              </div>
+              <div class="container__checkbox--item">
+                <input type="checkbox" id="cb2" data-responsavel/>
+                <label for="cb2">Clodomilson</label>
+              </div>
+              <div class="container__checkbox--item">
+                <input type="checkbox" id="cb3" data-responsavel/>
+                <label for="cb3">Tarik</label>
+              </div>
+              <div class="container__checkbox--item">
+                <input type="checkbox" id="cb4" data-responsavel/>
+                <label for="cb4">Vinícius</label>
+              </div>
+              <div class="container__checkbox--item">
+                <input type="checkbox" id="cb5" data-responsavel/>
+                <label for="cb5">William</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formulario-tarefas--linha-inteira">
+          <button class="formulario-tarefas__botao" type="button" id="botaoLimpar">Limpar</button>
+          <button class="formulario-tarefas__botao" id="botaoAdicionar">
+            Adicionar
+          </button>
+        </div>
       </form>
-    <main class="container-principal__lista-tarefas">
-        <h1><center>Tarefas</center></h1>
 
-        <ul id="listaDeTarefas" class="lista__tarefas"> </ul>
-    </main>
-    <script src="/js/index.js" type="module"></script>
-</body>
+      <main>
+        <h1 class="lista-tarefas__titulo">Lista de tarefas</h1>
+        <ul id="listaDeTarefas" class="lista__tarefas"></ul>
+      </main>
+    </div>
+    <script src="js/index.js" type="module"></script>
+  </body>
 </html>

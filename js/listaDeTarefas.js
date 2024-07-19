@@ -2,6 +2,9 @@ import { TAREFAS } from './constantes.js';
 
 //criarTarefas()
 
+
+
+
     
 export function criarTarefas(){
   
@@ -12,18 +15,20 @@ export function criarTarefas(){
 
     TAREFAS.map((tarefa => {
         const li = document.createElement('li');
-        li.classList = 'tarefa';
+        li.classList = 'container__tarefa';
         li.innerHTML = `
-            <div class="etiquetas">
-                    <div class="etiqueta__prioridade">${tarefa.prioridade}</div>    
-                    <div class="etiqueta">${tarefa.data}</div>    
-                    ${tarefa.responsavel.map(resp => `<div class="etiqueta">${resp}</div>`).join('')}
-                    <div class="etiqueta">${tarefa.responsavel}</div>    
-            </div>
-            <div class="descricao__tarefa">
-                    <h2 class="descricao__tarefa--titulo">${tarefa.titulo}</h2>
-                    <p>${tarefa.descricao}</p>
-            </div>
+            <div class="tarefas__etiquetas">
+				<div class="etiqueta__prioridade">${tarefa.prioridade}</div>
+				<div class="etiqueta">${tarefa.data}</div>
+				${tarefa.responsavel
+          .map((resp) => `<div class="etiqueta">${resp}</div>`)
+          .join('')}
+			</div>
+
+			<div class="container__tarefa--descricao">
+				<h2 class="descricao__tarefa--titulo">${tarefa.titulo}</h2>
+				<p>${tarefa.descricao}</p>
+			</div>
         `
         listaDeTarefas.appendChild(li);
         alterarCorEtiquetasPrioridades();
@@ -34,16 +39,13 @@ function alterarCorEtiquetasPrioridades(){
     const etiquetasPrioridades = document.querySelectorAll('.etiqueta__prioridade');
 
     etiquetasPrioridades.forEach((prioridade) => {
-    if(prioridade.textContent === "Baixa"){
-        // add cor de fundo verde 
-        prioridade.classList.add('etiqueta__baixa');
-    } else  if(prioridade.textContent === "Média"){
-        // add cor de fundo amarela
-        prioridade.classList.add('etiqueta__media');
-    } else if(prioridade.textContent.includes("Alta")){
-        // add cor de fundo vermelha
-        prioridade.classList.add('etiqueta__alta')
-    } 
+        if (prioridade.textContent.includes('Baixa')) {
+            prioridade.classList.add('etiqueta__prioridade--baixa')
+          } else if (prioridade.textContent.includes('Média')) {
+            prioridade.classList.add('etiqueta__prioridade--media')
+          } else {
+            prioridade.classList.add('etiqueta__prioridade--alta')
+          }
 })
 }
 

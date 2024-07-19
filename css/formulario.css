@@ -1,0 +1,72 @@
+.formulario-tarefas {
+    border: 1px solid var(--cinza-tundora);
+    padding: 40px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.formulario-tarefas--linha-inteira {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
+
+.formulario-tarefas--linha-metade {
+    display: flex;
+    width: 100%;
+    gap: 24px;
+}
+
+.formulario-tarefas--coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.container__checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.container__checkbox--item {
+    display: flex;
+    gap: 4px;
+}
+
+.input--borda {
+    border: 1px solid var(--cinza-tundora);
+    border-radius: 8px;
+    padding: 8px;
+    width: 100%;
+}
+
+.input-textarea {
+    resize: none;
+}
+
+.formulario-tarefas__botao {
+    border: 1px solid var(--cinza-tundora);
+    border-radius: 8px;
+    width: 172px;
+    padding: 8px 0;
+    margin-top: 16px;
+    transition: all .25s;
+}
+
+.formulario-tarefas__botao:last-child {
+    background-color: var(--cinza-tundora);
+    color: var(--branco);
+}
+
+.formulario-tarefas__botao:hover {
+    transform: scale(1.03);
+}
+
+.checkbox--texto {
+    border-bottom: 1px solid var(--cinza-tundora);
+    outline: none;
+}
