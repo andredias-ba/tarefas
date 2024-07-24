@@ -1,4 +1,5 @@
-import { PRIORIDADES, TAREFAS } from "./constantes.js";
+//  import { PRIORIDADES, TAREFAS, RESPONSAVEIS } from "./constantes.js";
+import { PRIORIDADES, RESPONSAVEIS } from "./constantes.js";
 import { criarTarefas } from "./listaDeTarefas.js";
 
 
@@ -11,43 +12,58 @@ export function criarPrioridades() {
         optionElemento.textContent = prioridade
  
         prioridadeSelect.appendChild(optionElemento)
-    });
+    })
 }
-
 
 
 export function pegarDadosDoFormulario(e){
     e.preventDefault()
     const tituloTarefa = document.querySelector('#tituloTarefaForm').value;
+//    console.log(`T: ${tituloTarefa}`);
     const prioridadeTarefa = document.querySelector('#prioridadeTarefaForm').value;
+//    console.log(`P: ${prioridadeTarefa}`);
     const dataTarefa = formatarData(document.querySelector('#dataTarefaForm').value);
+    console.log(`Dt: ${dataTarefa}`);
     const descricaoTarefa = document.querySelector('#descricaoTarefaForm').value;
-
+//    console.log(`Des: ${descricaoTarefa}`);
     // querySelectorAll('.classe') -> para o checkbox
     const checboxes = document.querySelectorAll('[data-responsavel]')
     const checkboxSelecionados = [];
 
     checboxes.forEach(checkbox => {
         if(checkbox.checked){
-            const labelCheckbockbox = document.querySelector(`label[for=${checkbox.id}]`).textContent
-            checkboxSelecionados.push(labelCheckbockbox);
+            const labelCheckbox = document.querySelector(`label[for=${checkbox.id}]`).textContent
+            checkboxSelecionados.push(labelCheckbox);
         }
     })
 
-const novaTarefa = {
-    titulo: tituloTarefa,
-    descricao: descricaoTarefa,
-    prioridade: prioridadeTarefa,
-    data: dataTarefa,
-    responsavel: checkboxSelecionados,
-}
+    console.log(`qtd check: ${checkboxSelecionados.length}`)
 
-TAREFAS.push(novaTarefa);
-document.getElementById('listaDeTarefas').innerHTML = '';
-criarTarefas();
+    if (tituloTarefa != '' && prioridadeTarefa != '' && descricaoTarefa != '' && checkboxSelecionados.length != 0 && dataTarefa != "undefined/undefined/"){
+        const novaTarefa = {
+            titulo: tituloTarefa,
+            descricao: descricaoTarefa,
+            prioridade: prioridadeTarefa,
+            data: dataTarefa,
+            responsavel: checkboxSelecionados,
+        }
+            // na primeira vez nao tem nada depois na segunda ele vem no formato
+        const tarefasAtualizadas = JSON.parse(localStorage.getItem('tarefas')) ||[]
+
+        tarefasAtualizadas.push(novaTarefa)
+        localStorage.setItem('tarefas', JSON.stringify(tarefasAtualizadas))
+
+       // TAREFAS.push(novaTarefa);
+       
+        //
+        criarTarefas();
+        limparFormulario();
+    } else{
+        alert("Dados do formulário incompletos!!");
+    }
 
    // console.log(tituloTarefa , prioridadeTarefa , dataTarefa , descricaoTarefa, checkboxSelecionados)
-}
+} // fim pegarDadosDoFormulario
 
 function formatarData(data){
     const[ano, mes, dia]= data.split('-')
@@ -58,14 +74,22 @@ function formatarData(data){
 
 
 export function limparFormulario(){
-    const tituloTarefa = document.querySelector('#tituloTarefaForm').value;
-    const prioridadeTarefa = document.querySelector('#prioridadeTarefaForm').value;
-    const dataTarefa = document.querySelector('#dataTarefaForm').value;
-    const descricaoTarefa = document.querySelector('#descricaoTarefaForm').value;
+    const tituloTarefa = document.querySelector('#tituloTarefaForm')
+    const prioridadeTarefa = document.querySelector('#prioridadeTarefaForm')
+    const dataTarefa = document.querySelector('#dataTarefaForm')
+    const descricaoTarefa = document.querySelector('#descricaoTarefaForm')
 
     tituloTarefa.value = '';
     prioridadeTarefa.value = 'Alta';
     dataTarefa.value = '';
     descricaoTarefa.value ='';
+    
+    const checkResponsáveis = document.querySelectorAll('[data-responsavel]')
 
+    checkResponsáveis.forEach(checkbox => {
+        checkbox.checked = false;
+    })
+    
+    //desafio -> limpar os checkboxes também!!
 }
+
