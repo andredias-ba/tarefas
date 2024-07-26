@@ -64,3 +64,20 @@
 .etiqueta__prioridade--baixa {
     background-color: var(--verde);
 }
+
+.tarefa__botao-deletar {
+    background-color: var(--vermelho);
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    transition: all .25s;
+}
+
+.tarefa__botao-deletar:hover {
+    transform: scale(1.05);
+}
+ 
+.tarefa__botao-deletar__icon {
+    width: 20px;
+    color: var(--branco);
+}

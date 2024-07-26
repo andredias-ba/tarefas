@@ -1,5 +1,5 @@
-//import { TAREFAS, RESPONSAVEIS } from './constantes.js';
-import { RESPONSAVEIS } from './constantes.js';
+//import { TAREFAS, RESPONSAVEIS, imagemDelete } from './constantes.js';
+import { imagemDelete, RESPONSAVEIS } from './constantes.js';
 
 //criarTarefas()
 
@@ -25,9 +25,14 @@ export function gerarResponsaveis(){
 export function criarTarefas(){
     const tarefas = JSON.parse(localStorage.getItem('tarefas'))|| [];
     const listaDeTarefas = document.getElementById('listaDeTarefas');
-
+    const deleteSvg = document.createElement('svg');
+    deleteSvg.innerHTML = imagemDelete;
+    const btDelete = document.createElement('button');
+    btDelete.appendChild(deleteSvg);
+    
     ordenarListadeTarefasPorData(tarefas)
     ordenarListaDeTarefasPorPrioridade(tarefas)
+
     
     // desafio => nao precisar zerar minha lista
     document.getElementById('listaDeTarefas').innerHTML = '';
@@ -43,37 +48,40 @@ export function criarTarefas(){
           .map((resp) => `<div class="etiqueta">${resp}</div>`)
           .join('')}
 			</div>
-
-            <div>
-            <button> 
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22.704 0H9.296C3.472 0 0 3.472 0 9.296V22.688C0 28.528 3.472 32 9.296 32H22.688C28.512 32 31.984 28.528 31.984 22.704V9.296C32 3.472 28.528 0 22.704 0Z" fill="#CF3F3F"/>
-                <g clip-path="url(#clip0_440_219)">
-                <path d="M9.32568 11.8335H22.659" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M14.3257 15.1665V20.1665" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M17.6587 15.1665V20.1665" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10.1587 11.8335L10.992 21.8335C10.992 22.2755 11.1676 22.6994 11.4802 23.012C11.7927 23.3246 12.2167 23.5002 12.6587 23.5002H19.3254C19.7674 23.5002 20.1913 23.3246 20.5039 23.012C20.8164 22.6994 20.992 22.2755 20.992 21.8335L21.8254 11.8335" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M13.4922 11.8333V9.33333C13.4922 9.11232 13.58 8.90036 13.7363 8.74408C13.8925 8.5878 14.1045 8.5 14.3255 8.5H17.6589C17.8799 8.5 18.0918 8.5878 18.2481 8.74408C18.4044 8.90036 18.4922 9.11232 18.4922 9.33333V11.8333" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_440_219">
-                <rect width="20" height="20" fill="white" transform="translate(5.99219 6)"/>
-                </clipPath>
-                </defs>
-                </svg>              
-            </button>
-            </div>
+            
 			<div class="container__tarefa--descricao">
 				<h2 class="descricao__tarefa--titulo">${tarefa.titulo}</h2>
 				<p>${tarefa.descricao}</p>
-			</div>
-            
+			</div>            
        
+        <button class="tarefa__botao-deletar">
+            <svg class="tarefa__botao-deletar__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.32568 5.8335H16.659" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8.32568 9.1665V14.1665" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M11.6587 9.1665V14.1665" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.15869 5.8335L4.99202 15.8335C4.99202 16.2755 5.16762 16.6994 5.48018 17.012C5.79274 17.3246 6.21666 17.5002 6.65869 17.5002H13.3254C13.7674 17.5002 14.1913 17.3246 14.5039 17.012C14.8164 16.6994 14.992 16.2755 14.992 15.8335L15.8254 5.8335" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.49219 5.83333V3.33333C7.49219 3.11232 7.57999 2.90036 7.73627 2.74408C7.89255 2.5878 8.10451 2.5 8.32552 2.5H11.6589C11.8799 2.5 12.0918 2.5878 12.2481 2.74408C12.4044 2.90036 12.4922 3.11232 12.4922 3.33333V5.83333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
         `
+        const deleteButton = li.querySelector('.tarefa__botao-deletar')
+        deleteButton.addEventListener('click', () => deletarTarefa(tarefa.id))
+            
+        
+
         listaDeTarefas.appendChild(li);
         alterarCorEtiquetasPrioridades();
     }))
 }
+
+function deletarTarefa(id) {
+  const tarefas =  JSON.parse(localStorage.getItem('tarefas')) || []
+  const tarefasFiltradas = tarefas.filter((tarefa) => tarefa.id !== id)
+  localStorage.setItem('tarefas', JSON.stringify(tarefasFiltradas))
+ 
+  criarTarefas()
+}
+ 
 
 function alterarCorEtiquetasPrioridades(){
     const etiquetasPrioridades = document.querySelectorAll('.etiqueta__prioridade');

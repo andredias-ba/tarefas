@@ -70,3 +70,13 @@
     border-bottom: 1px solid var(--cinza-tundora);
     outline: none;
 }
+
+.botao__deletar-tarefa{
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+
+}

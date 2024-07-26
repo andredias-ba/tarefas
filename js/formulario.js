@@ -41,6 +41,7 @@ export function pegarDadosDoFormulario(e){
 
     if (tituloTarefa != '' && prioridadeTarefa != '' && descricaoTarefa != '' && checkboxSelecionados.length != 0 && dataTarefa != "undefined/undefined/"){
         const novaTarefa = {
+            id: Date.now(),
             titulo: tituloTarefa,
             descricao: descricaoTarefa,
             prioridade: prioridadeTarefa,
