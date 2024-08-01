@@ -1,29 +1,15 @@
 //import { TAREFAS, RESPONSAVEIS, imagemDelete } from './constantes.js';
 import { imagemDelete, RESPONSAVEIS } from './constantes.js';
-
+import { pegarTarefasDaApi, deletarTarefaDaApi } from './api.js';
 //criarTarefas()
 
 
-export function gerarResponsaveis(){
-    const listaResp = document.querySelector('.container__checkbox')
-    //console.log(listaResp)
-    RESPONSAVEIS.map((resp => {
-    //    console.log(resp.responsavel)
-    //    console.log(resp.id)
-        const div = document.createElement('div');
-        div.innerHTML = `
-        <div class="container__checkbox--item">
-            <input type="checkbox" id=${resp.id} data-responsavel/>
-            <label for=${resp.id}>${resp.responsavel}</label>
-        </div> `
-        listaResp.append(div);
-    }))
-
-} // gerarResponsaveis
-
-
-export function criarTarefas(){
+// transformei a crair tarefas em ASYNC para poder os metodos await
+export async function criarTarefas(){
+/* este trecho comentado são os comandos usando LocalStorage
     const tarefas = JSON.parse(localStorage.getItem('tarefas'))|| [];
+*/
+    const tarefas = await pegarTarefasDaApi();    
     const listaDeTarefas = document.getElementById('listaDeTarefas');
     const deleteSvg = document.createElement('svg');
     deleteSvg.innerHTML = imagemDelete;
@@ -41,6 +27,7 @@ export function criarTarefas(){
         const li = document.createElement('li');
         li.classList = 'container__tarefa';
         li.innerHTML = `
+        <div class="conteudo__tarefa">
             <div class="tarefas__etiquetas">
 				<div class="etiqueta__prioridade">${tarefa.prioridade}</div>
 				<div class="etiqueta">${tarefa.data}</div>
@@ -52,7 +39,8 @@ export function criarTarefas(){
 			<div class="container__tarefa--descricao">
 				<h2 class="descricao__tarefa--titulo">${tarefa.titulo}</h2>
 				<p>${tarefa.descricao}</p>
-			</div>            
+			</div>      
+        </div>      
        
         <button class="tarefa__botao-deletar">
             <svg class="tarefa__botao-deletar__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -67,19 +55,24 @@ export function criarTarefas(){
         const deleteButton = li.querySelector('.tarefa__botao-deletar')
         deleteButton.addEventListener('click', () => deletarTarefa(tarefa.id))
             
-        
-
         listaDeTarefas.appendChild(li);
         alterarCorEtiquetasPrioridades();
     }))
 }
 
-function deletarTarefa(id) {
-  const tarefas =  JSON.parse(localStorage.getItem('tarefas')) || []
-  const tarefasFiltradas = tarefas.filter((tarefa) => tarefa.id !== id)
-  localStorage.setItem('tarefas', JSON.stringify(tarefasFiltradas))
- 
-  criarTarefas()
+//pegarTarefaDaApi()
+
+// DeletarTarefas do LocalStorage
+/*export function deletarTarefa(id) {
+    const tarefas =  JSON.parse(localStorage.getItem('tarefas')) || []
+    const tarefasFiltradas = tarefas.filter((tarefa) => tarefa.id !== id)
+    localStorage.setItem('tarefas', JSON.stringify(tarefasFiltradas))
+*/
+
+// deletar tarefa da API
+async function deletarTarefa(id) {
+    await deletarTarefaDaApi(id)
+    criarTarefas()
 }
  
 
@@ -128,3 +121,21 @@ function converterData(data){
     return dataConvertida;
 
 }
+
+
+export function gerarResponsaveis(){
+    const listaResp = document.querySelector('.container__checkbox')
+    //console.log(listaResp)
+    RESPONSAVEIS.map((resp => {
+    //    console.log(resp.responsavel)
+    //    console.log(resp.id)
+        const div = document.createElement('div');
+        div.innerHTML = `
+        <div class="container__checkbox--item">
+            <input type="checkbox" id=${resp.id} data-responsavel/>
+            <label for=${resp.id}>${resp.responsavel}</label>
+        </div> `
+        listaResp.append(div);
+    }))
+
+} // gerarResponsaveis

@@ -1,6 +1,7 @@
 //  import { PRIORIDADES, TAREFAS, RESPONSAVEIS } from "./constantes.js";
 import { PRIORIDADES, RESPONSAVEIS } from "./constantes.js";
 import { criarTarefas } from "./listaDeTarefas.js";
+import { postarTarefaNaApi } from "./api.js";
 
 
 export function criarPrioridades() {
@@ -16,16 +17,13 @@ export function criarPrioridades() {
 }
 
 
-export function pegarDadosDoFormulario(e){
+export async function pegarDadosDoFormulario(e){
     e.preventDefault()
     const tituloTarefa = document.querySelector('#tituloTarefaForm').value;
-//    console.log(`T: ${tituloTarefa}`);
     const prioridadeTarefa = document.querySelector('#prioridadeTarefaForm').value;
-//    console.log(`P: ${prioridadeTarefa}`);
     const dataTarefa = formatarData(document.querySelector('#dataTarefaForm').value);
     console.log(`Dt: ${dataTarefa}`);
     const descricaoTarefa = document.querySelector('#descricaoTarefaForm').value;
-//    console.log(`Des: ${descricaoTarefa}`);
     // querySelectorAll('.classe') -> para o checkbox
     const checboxes = document.querySelectorAll('[data-responsavel]')
     const checkboxSelecionados = [];
@@ -37,7 +35,7 @@ export function pegarDadosDoFormulario(e){
         }
     })
 
-    console.log(`qtd check: ${checkboxSelecionados.length}`)
+  //  console.log(`qtd check: ${checkboxSelecionados.length}`)
 
     if (tituloTarefa != '' && prioridadeTarefa != '' && descricaoTarefa != '' && checkboxSelecionados.length != 0 && dataTarefa != "undefined/undefined/"){
         const novaTarefa = {
@@ -48,11 +46,14 @@ export function pegarDadosDoFormulario(e){
             data: dataTarefa,
             responsavel: checkboxSelecionados,
         }
-            // na primeira vez nao tem nada depois na segunda ele vem no formato
-        const tarefasAtualizadas = JSON.parse(localStorage.getItem('tarefas')) ||[]
 
-        tarefasAtualizadas.push(novaTarefa)
-        localStorage.setItem('tarefas', JSON.stringify(tarefasAtualizadas))
+     await postarTarefaNaApi(tituloTarefa, descricaoTarefa, prioridadeTarefa, dataTarefa, checkboxSelecionados)
+
+            // na primeira vez nao tem nada depois na segunda ele vem no formato
+       // const tarefasAtualizadas = JSON.parse(localStorage.getItem('tarefas')) ||[]
+
+//        tarefasAtualizadas.push(novaTarefa)
+//        localStorage.setItem('tarefas', JSON.stringify(tarefasAtualizadas))
 
        // TAREFAS.push(novaTarefa);
        
