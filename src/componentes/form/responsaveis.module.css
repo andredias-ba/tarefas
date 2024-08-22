@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .rotuloContainer {
+    color: var(--preto);
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .responsaveis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+  }
+  
+  .responsavel {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .rotuloResponsavel {
+    color: var(--preto);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .erro {
+    color: var(--vermelho);
+    font-size: 13px;
+    font-weight: 400;
+  }

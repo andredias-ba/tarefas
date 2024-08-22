@@ -1,0 +1,38 @@
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .campos {
+    display: flex;
+    gap: 24px;
+  }
+  
+  .controles {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+  }
+  
+  .botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 48px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .botaoLimpar {
+    background: none;
+    border: 1px solid var(--preto);
+    color: var(--preto);
+  }
+  
+  .botaoAdicionar {
+    background-color: var(--preto);
+    color: var(--branco);
+  }

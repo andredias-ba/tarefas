@@ -1,0 +1,31 @@
+.cabecalho {
+    background-color: var(--branco);
+    height: 72px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .links {
+    display: flex;
+    gap: 32px;
+  }
+  
+  .link {
+    color: var(--cinza-dove-gray);
+    font-size: 16px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  
+  .link:hover {
+    color: var(--preto);
+  }
+  
+  .linkAtivo {
+    color: var(--preto);
+    font-weight: 600;
+  }

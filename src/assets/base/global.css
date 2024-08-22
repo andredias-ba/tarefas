@@ -1,0 +1,22 @@
+@import url('./fontes.css');
+@import url('./variaveis.css');
+@import url('./reset.css');
+
+#root {
+  background-color: var(--fundo);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.tela {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+}

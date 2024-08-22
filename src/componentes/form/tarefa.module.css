@@ -1,0 +1,85 @@
+.tarefa {
+    background-color: var(--branco);
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 8px;
+  }
+  
+  .conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+  }
+  
+  .etiquetas {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .etiqueta {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 8px;
+    border: 1px solid var(--cinza-dusty-gray);
+    border-radius: 4px;
+    color: var(--cinza-dusty-gray);
+    font-size: 12px;
+    font-weight: 400;
+  }
+  
+  .prioridade {
+    border: none;
+    color: var(--branco);
+    font-weight: 500;
+  }
+  
+  .prioridadeAlta {
+    background-color: var(--vermelho);
+  }
+  
+  .prioridadeMedia {
+    background-color: var(--amarelo);
+  }
+  
+  .prioridadeBaixa {
+    background-color: var(--verde);
+  }
+  
+  .detalhes {
+    display: flex;
+    align-items: center;
+  }
+  
+  .titulo {
+    flex-shrink: 0;
+    max-width: 304px;
+    margin-right: 16px;
+    padding-right: 16px;
+    border-right: 1px solid var(--cinza-silver);
+    color: var(--preto);
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .descricao {
+    color: var(--preto);
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .botaoDeletar {
+    transition: transform 0.2s;
+  }
+  
+  .botaoDeletar:hover {
+    transform: scale(1.1);
+  }
+  
+  .botaoDeletarIcone {
+    width: 32px;
+    color: var(--vermelho);
+  }

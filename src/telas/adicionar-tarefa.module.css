@@ -1,0 +1,12 @@
+.adicionarTarefaTela {
+  /*  composes: tela from global;   */
+    padding: 48px 0;
+  }
+  
+  .container {
+    /*  composes: tela from global;   */
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  

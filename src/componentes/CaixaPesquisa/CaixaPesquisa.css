@@ -1,0 +1,30 @@
+.caixa-pesquisa{
+    margin: 24px 0;
+}
+
+.caixa-pesquisa label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.caixa-pesquisa input{
+    background-color: #fff ;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.06);
+    width: 90%;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 24px;
+    box-sizing: border-box;
+
+/*    &::placeholder{
+        opacity: 0.5;
+    }*/
+}
+
+
+.caixa-pesquisa input::placeholder{
+    opacity: 0.2;
+}
+

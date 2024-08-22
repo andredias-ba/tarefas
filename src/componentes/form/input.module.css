@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .rotulo {
+    color: var(--preto);
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .inputContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .input {
+    background-color: var(--branco);
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 8px;
+    color: var(--preto);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .input::placeholder {
+    color: var(--cinza-dusty-gray);
+  }
+  
+  .botaoPesquisa {
+    position: absolute;
+    right: 16px;
+    color: var(--preto);
+  }
+  
+  .botaoPesquisaIcone {
+    width: 24px;
+  }
+  
+  .erro {
+    color: var(--vermelho);
+    font-size: 13px;
+    font-weight: 400;
+  }
+  
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
+  
+  input[type='search'] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
